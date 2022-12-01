@@ -1,2 +1,2 @@
 <h1>P99-JS</h1>
-<p>These are my solutions to P-99 Prolog Problems <a href=https://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/index.html>[Link to the website with Problems]</a> I wrote using JavaScript language. This is something I'm working on to practice my skills in logistic programming.</p>
+<p>These are my solutions to P-99 Prolog Problems <a href=https://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/index.html>[Link to the website with Problems]</a> I wrote using JavaScript language. This is something I'm working on to practice my skills in logic programming.</p>
