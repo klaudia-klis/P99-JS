@@ -302,3 +302,22 @@ function p23(array, n) {
 }
 
 console.log(p23([1,2,3,4,5,6,7,8,9,10], 5));
+
+// P24 Lotto: Draw N different random numbers from the set 1..M.
+function p24(n, m) {
+  var arr = [];
+  for (var i = 1; i < n; i++) {
+    arr.push(i);
+  }
+  var shuffled = arr
+      .map(value => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value)
+  var result = [];
+  for (var i = 0; i < m; i++) {
+    result.push(shuffled[i]);
+  }
+  return result;
+}
+
+console.log(p24(49, 6));
