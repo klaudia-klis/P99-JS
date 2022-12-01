@@ -287,3 +287,18 @@ function p22(n, m) {
 }
 
 console.log(p22(14, 21));
+
+// P23 Extract a given number of randomly selected elements from a list.
+function p23(array, n) {
+  var result = [];
+  let shuffled = array 
+      .map(value => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value)
+  for (var i = 0; i < n; i++) {
+    result.push(shuffled[i]);
+  }
+  return result;
+}
+
+console.log(p23([1,2,3,4,5,6,7,8,9,10], 5));
