@@ -363,3 +363,10 @@ function p32(a, b) {
 
 console.log(p32(12,4));
 
+// P33 Determine whether two positive integer numbers are coprime.
+function p33(a, b) {
+  return p32(a, b) === 1;
+}
+
+console.log(p33(35, 64));
+
