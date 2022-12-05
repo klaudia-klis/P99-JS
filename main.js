@@ -321,3 +321,34 @@ function p24(n, m) {
 }
 
 console.log(p24(49, 6));
+
+// P25 Generate a random permutation of the elements of a list.
+function p25(arr) {
+  let shuffled = arr 
+      .map(value => ({ value, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ value }) => value)
+  return shuffled;
+}
+
+console.log(p25([1,2,3,4,5,6,7,8,9,10]));
+
+// P26 Generate the combinations of K distinct objects chosen from the N elements of a list
+
+// P27 Group the elements of a set into disjoint subsets.
+
+// P28 Sorting a list of lists according to length of sublists
+
+// P31 Determine whether a given integer number is prime.
+function p32(int) {
+  if (int === 1) return "1 is neither prime nor a composite number"
+  var d = int-1;
+  while (d > 1) {
+    if ( (int%d) === 0) return false;
+    d--;
+  }
+  return true;
+}
+
+console.log(p32(19));
+
