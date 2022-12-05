@@ -340,7 +340,7 @@ console.log(p25([1,2,3,4,5,6,7,8,9,10]));
 // P28 Sorting a list of lists according to length of sublists
 
 // P31 Determine whether a given integer number is prime.
-function p32(int) {
+function p31(int) {
   if (int === 1) return "1 is neither prime nor a composite number"
   var d = int-1;
   while (d > 1) {
@@ -350,5 +350,16 @@ function p32(int) {
   return true;
 }
 
-console.log(p32(19));
+console.log(p31(19));
+
+// P32 Determine the greatest common divisor of two positive integer numbers.
+function p32(a, b) {
+  if ( (a % b) === 0 ) {
+    return b;
+  }
+  else
+    return p32(b, (a % b));
+}
+
+console.log(p32(12,4));
 
