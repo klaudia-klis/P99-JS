@@ -379,7 +379,7 @@ function p34(x) {
   }
   var result = [];
   if (p31(x) === false) {
-    for (n = 0; n < range.length; n++) {
+    for (var n = 0; n < range.length; n++) {
       if (p32(x, range[n]) === 1) {
         result.push(range[n]);
       }
@@ -395,7 +395,7 @@ function p35(x) {
   if (x === 1) return [];
   else {
     var factors = [];
-    for (i = 2; i <= x; i++) {
+    for (var i = 2; i <= x; i++) {
       if ((x % i) === 0) {
         factors.push(i);
       } 
@@ -413,7 +413,7 @@ console.log(p35(315));
 function p36(x) {
   var arr = [];
   var prime_factors = p35(x);
-  for (i = 0; i < prime_factors.length; i++) {
+  for (var i = 0; i < prime_factors.length; i++) {
     if (!Array.isArray(arr.at(-1))) {
       arr.push([prime_factors[i]]);
     } else if (arr.at(-1).at(-1) === prime_factors[i]) {
@@ -421,7 +421,7 @@ function p36(x) {
     } else arr.push([prime_factors[i]]);
   }
   var result = [];
-  for (i = 0; i < arr.length; i++) {
+  for (var i = 0; i < arr.length; i++) {
     if (arr[i].length !== 1) {
       result.push([arr.at(i).at(-1), arr[i].length]);
     } else result.push([arr.at(i).at(-1), 1]);
@@ -436,10 +436,10 @@ function p37(x) {
   var result36 = p36(x);
   var arr = [];
   
-  function mult(num) {
+  function mult(array) {
     var num = 1;
-    for (var m = 0; m < arr.length; m++) {
-      num *= arr[m];
+    for (var m = 0; m < array.length; m++) {
+      num *= array[m];
     }
     return num;
   }
@@ -452,3 +452,21 @@ function p37(x) {
 }
 
 console.log(p37(315));
+
+// P39 A list of prime numbers.
+function p39(x, y) {
+  var arr = [];
+  for (i = x; i <= y; i++) {
+    arr.push(i);
+  }
+  
+  var result = [];
+  for (m = 1; m < (arr.length - 1); m++) {
+    if (p31(arr[m])) {
+      result.push(arr.at(m));
+    }
+  }
+  return result;
+}
+
+console.log(p39(20,50));
