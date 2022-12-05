@@ -389,3 +389,66 @@ function p34(x) {
 }
 
 console.log(p34(10));
+
+// P35 Determine the prime factors of a given positive integer.
+function p35(x) {
+  if (x === 1) return [];
+  else {
+    var factors = [];
+    for (i = 2; i <= x; i++) {
+      if ((x % i) === 0) {
+        factors.push(i);
+      } 
+    }
+    var result = [];
+    var y = (x / factors[0]);
+    result.push(factors[0]);
+    return result.concat(p35(y));
+  }
+}
+
+console.log(p35(315));
+
+// P36 Determine the prime factors of a given positive integer (2).
+function p36(x) {
+  var arr = [];
+  var prime_factors = p35(x);
+  for (i = 0; i < prime_factors.length; i++) {
+    if (!Array.isArray(arr.at(-1))) {
+      arr.push([prime_factors[i]]);
+    } else if (arr.at(-1).at(-1) === prime_factors[i]) {
+      arr.at(-1).push(prime_factors[i]);
+    } else arr.push([prime_factors[i]]);
+  }
+  var result = [];
+  for (i = 0; i < arr.length; i++) {
+    if (arr[i].length !== 1) {
+      result.push([arr.at(i).at(-1), arr[i].length]);
+    } else result.push([arr.at(i).at(-1), 1]);
+  }
+  return result;
+}
+
+console.log(p36(315));
+
+// P37 (**) Calculate Euler's totient function phi(m) (improved).
+function p37(x) {
+  var result36 = p36(x);
+  var arr = [];
+  
+  function mult(num) {
+    var num = 1;
+    for (var m = 0; m < arr.length; m++) {
+      num *= arr[m];
+    }
+    return num;
+  }
+
+  for (var i = 0; i < result36.length; i++) {
+    arr.push((result36.at(i).at(0) - 1) * (result36.at(i).at(0))**(result36.at(i).at(-1) - 1));
+  }
+
+  return mult(arr);
+}
+
+console.log(p37(315));
