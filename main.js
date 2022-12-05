@@ -456,12 +456,12 @@ console.log(p37(315));
 // P39 A list of prime numbers.
 function p39(x, y) {
   var arr = [];
-  for (i = x; i <= y; i++) {
+  for (var i = x; i <= y; i++) {
     arr.push(i);
   }
   
   var result = [];
-  for (m = 1; m < (arr.length - 1); m++) {
+  for (var m = 1; m < (arr.length - 1); m++) {
     if (p31(arr[m])) {
       result.push(arr.at(m));
     }
@@ -470,3 +470,83 @@ function p39(x, y) {
 }
 
 console.log(p39(20,50));
+
+// P40 Goldbach's conjecture.
+function p40(x) {
+  if (x == 2) return [1, 1];
+  if (x == 3) return [1, 2];
+  if (x == 4) return [2, 2];
+  if (x == 6) return [3, 3];
+  var arr = [];
+  for (var i = 2; i <= x; i++) {
+    arr.push(i);
+  }
+  var prime_elements = [];
+  for (var m = 0; m < arr.length; m++) {
+    if (p31(arr[m])) {
+      prime_elements.push(arr[m]);
+    }
+  }
+  
+  function sum(array, sum) {
+    let indexes = [];
+    
+    for (var j = 0; j < array.length; j++) {
+      for (var k = j + 1; k < array.length; k++) {
+        if (array[j] + array[k] === sum) {
+          indexes.push(array[j]);
+          indexes.push(array[k]);
+        }
+      }
+    }
+    return indexes;
+  }
+  return sum(prime_elements, x);
+}
+
+console.log(p40(12));
+
+// P41 A list of Goldbach compositions.
+function p41(x, y) {
+  var arr = [];
+  for (var i = x; i <= y; i++) {
+    if (i % 2 === 0) {
+      arr.push(i);
+    }
+  }
+  var prime_elements = [];
+  for (var j = 0; j < arr.length; j++) {
+    prime_elements.push(p40(arr[j]));
+  }
+  var result = [];
+  for (var k = 0; k < prime_elements.length; k++) {
+    result.push([arr[k], prime_elements[k]]);
+  }
+  return result;
+}
+
+console.log(p41(9,20));
+
+// P41a A list of Goldbach compositions (primes bigger than 50).
+function p41a(x, y) {
+  var arr = [];
+  for (var i = x; i <= y; i++) {
+    if (i % 2 === 0) {
+      arr.push(i);
+    }
+  }
+  var prime_elements = [];
+  for (var j = 0; j < arr.length; j++) {
+    prime_elements.push(p40(arr[j]));
+  }
+  
+  var result = [];
+  for (var k = 0; k < prime_elements.length; k++) {
+    if (prime_elements.at(k).at(0) > 50 && prime_elements.at(k).at(-1) > 50 ) {
+      result.push([arr[k], prime_elements[k]]);
+    }
+  }
+  return result;
+}
+
+console.log(p41a(1, 2000));
