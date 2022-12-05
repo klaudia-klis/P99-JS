@@ -370,3 +370,22 @@ function p33(a, b) {
 
 console.log(p33(35, 64));
 
+// P34 Calculate Euler's totient function phi(m).
+  // Euler's so-called totient function phi(m) is defined as the number of positive integers r (1 <= r < m) that are coprime to m.
+function p34(x) {
+  var range = [];
+  for (i = 1; i < x; i++) {
+    range.push(i);
+  }
+  var result = [];
+  if (p31(x) === false) {
+    for (n = 0; n < range.length; n++) {
+      if (p32(x, range[n]) === 1) {
+        result.push(range[n]);
+      }
+    }
+    return result.length;
+  } else result.push(1);
+}
+
+console.log(p34(10));
