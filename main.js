@@ -333,11 +333,32 @@ function p25(arr) {
 
 console.log(p25([1,2,3,4,5,6,7,8,9,10]));
 
+console.log("______________________________")
 // P26 Generate the combinations of K distinct objects chosen from the N elements of a list
+function p26(arr, x) {
+  var result = [];
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      for (var k = j + 1; k < arr.length; k++) {
+        result.push([arr[i], arr[j], arr[k]]);
+      }
+    }
+  }
+  return result;
+}
+
+console.log(p26([1,2,3,4], 3))
 
 // P27 Group the elements of a set into disjoint subsets.
 
-// P28 Sorting a list of lists according to length of sublists
+// P28 Sorting a list of lists according to length of sublists.
+function p28(arr) {
+  return arr.sort( (a, b) => {
+    return a.length - b.length;
+  });
+}
+
+console.log(p28([[1,2], [1], [1,2,3,4], [4,3,2]]));
 
 // P31 Determine whether a given integer number is prime.
 function p31(int) {
